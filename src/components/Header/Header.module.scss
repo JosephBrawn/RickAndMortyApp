@@ -1,24 +1,36 @@
-@import "../../assets/styles/variables";
+@import '../../assets/styles/variables.scss';
 
 .header {
-  background-color: $secondary-color;
+  background-color: $primary-color;
+  color: $secondary-color;
   padding: 10px 0;
-
+  position: sticky;
+  top: 0;
+  z-index: 100;
 }
 
 .container {
-  display: flex;
-  justify-content: center;
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 20px;
-
-  @media (min-width: $tablet-breakpoint) {
-    padding: 0 40px;
-  }
+  display: flex;
+  justify-content: space-between;
 }
-.logo {
-  font-size: 24px;
+
+.nav {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+
+}
+
+.link {
+  color: $secondary-color;
+  text-decoration: none;
   font-weight: bold;
-  color: $primary-color;
+  transition: color 0.3s ease;
+
+  &:hover {
+    color: lighten($secondary-color, 20%);
+  }
 }

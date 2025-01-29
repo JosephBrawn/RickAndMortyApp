@@ -1,53 +1,80 @@
-@import '../../assets/styles/variables';
+@import '../../assets/styles/variables.scss';
 
 .card {
+  background-color: $card-background;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   display: flex;
   flex-direction: column;
-  background-color: $card-background;
-  border-radius: $border-radius;
-  overflow: hidden;
   margin: 10px;
   max-width: 300px;
+  transition: transform 0.2s ease-in-out;
+  &:hover {
+    transform: scale(1.02);
+  }
 
-  @media (min-width: $tablet-breakpoint) {
+  @media (min-width: 768px) {
     flex-direction: row;
-    max-width: none;
   }
 }
 
 .image {
   width: 100%;
   height: auto;
-  @media (min-width: $tablet-breakpoint) {
+  display: block;
+  @media (min-width: 768px) {
     width: 150px;
-    height: 150px;
   }
-
 }
 
-.info {
-  padding: 10px;
+.content {
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
 }
 
 .name {
   font-size: 1.2rem;
+  margin-bottom: 10px;
+}
+
+.info {
   margin-bottom: 5px;
-}
+  font-size: 1rem;
+  .status{
+    font-weight: bold;
+    &.alive {
+      color: #28a745;
+    }
 
-.species,
-.status {
-  font-size: 0.9rem;
-  margin-bottom: 3px;
+    &.dead {
+      color: #dc3545;
+    }
+    &.unknown{
+      color: #ffc107
+    }
+  }
 }
-
-.detailsButton {
-  background-color: $primary-color;
-  color: $secondary-color;
+.favoriteButton {
+  background-color: #28a745;
+  color: white;
   border: none;
-  padding: 8px 16px;
-  border-radius: $border-radius;
+  padding: 10px 15px;
   cursor: pointer;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+
   &:hover {
-    opacity: 0.8;
+    background-color: #218838;
+  }
+
+  &.isFavorite {
+    background-color: #dc3545;
+
+    &:hover {
+      background-color: #c82333;
+    }
   }
 }

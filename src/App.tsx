@@ -1,17 +1,22 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import HomePage from './pages/HomePage/HomePage';
-import Layout from './components/Layout/Layout';
-import './assets/styles/global.scss';
+import Home from './pages/Home/Home';
+import Favorites from './pages/Favorites/Favorites';
+import Header from './components/Header/Header';
+import NotFound from './components/NotFound/NotFound';
+import styles from './assets/styles/main.module.scss';
 
 const App: React.FC = () => {
     return (
         <Router>
-            <Layout>
+            <div className={styles.container}>
+                <Header />
                 <Routes>
-                    <Route path="/" element={<HomePage />} />
+                    <Route path="/" element={<Home />} />
+                    <Route path="/favorites" element={<Favorites />} />
+                    <Route path="*" element={<NotFound />} />
                 </Routes>
-            </Layout>
+            </div>
         </Router>
     );
 };

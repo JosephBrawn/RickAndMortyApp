@@ -1,0 +1,15 @@
+@import './variables.scss';
+
+body {
+  font-family: $font-family;
+  margin: 0;
+  padding: 0;
+  background-color: $secondary-color;
+  color: $primary-color;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}

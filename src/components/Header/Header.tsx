@@ -1,14 +1,14 @@
-import React, { FC } from 'react';
-import { Link } from 'react-router-dom';
+import React from 'react';
 import styles from './Header.module.scss';
-
-const Header: FC = () => {
+import { Link } from 'react-router-dom';
+const Header: React.FC = () => {
     return (
         <header className={styles.header}>
             <div className={styles.container}>
-                <Link to="/" className={styles.logo}>
-                    Rick and Morty
-                </Link>
+                <nav className={styles.nav}>
+                    <Link to="/" className={styles.link}>Home</Link>
+                    <Link to="/favorites" className={styles.link}>Favorites</Link>
+                </nav>
             </div>
         </header>
     );

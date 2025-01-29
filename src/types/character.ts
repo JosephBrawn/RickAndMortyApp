@@ -19,16 +19,12 @@ export interface Character {
     created: string;
 }
 
-export interface Info {
-    count: number;
-    pages: number;
-    next: string | null;
-    prev: string | null;
-}
-
-export interface CharactersState {
-    list: Character[];
-    info: Info | null;
-    loading: boolean;
-    error: string | null;
+export interface CharactersResponse {
+    info: {
+        count: number;
+        pages: number;
+        next: string | null;
+        prev: string | null;
+    };
+    results: Character[];
 }

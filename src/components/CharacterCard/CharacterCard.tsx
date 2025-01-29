@@ -1,36 +1,56 @@
-import React, { FC, useState } from 'react';
-import { Character } from '../../features/characters/types';
+import React from 'react';
 import styles from './CharacterCard.module.scss';
-import Modal from '../Modal/Modal';
-import CharacterDetails from '../CharacterDetails/CharacterDetails';
+import { Character } from '../../types/character';
+import { useAppDispatch } from '../../store/hooks';
+import { toggleFavorite } from '../../store/slices/charactersSlice';
+import { useAppSelector } from "../../store/hooks";
 
 interface CharacterCardProps {
     character: Character;
 }
 
-const CharacterCard: FC<CharacterCardProps> = ({ character }) => {
-    const [isModalOpen, setIsModalOpen] = useState(false);
+const CharacterCard: React.FC<CharacterCardProps> = ({ character }) => {
+    const dispatch = useAppDispatch();
+    const favorites = useAppSelector((state) => state.characters.favorites);
 
-    const openModal = () => setIsModalOpen(true);
-    const closeModal = () => setIsModalOpen(false);
+    const isFavorite = favorites.some((fav) => fav.id === character.id);
+
+    const handleToggleFavorite = () => {
+        dispatch(toggleFavorite(character));
+    };
+
+    const getStatusClass = () => {
+        if (character.status === "Alive") {
+            return `${styles.status} ${styles.alive}`;
+        } else if (character.status === "Dead") {
+            return `${styles.status} ${styles.dead}`;
+        } else if (character.status === "unknown") {
+            return `${styles.status} ${styles.unknown}`;
+        }
+        return styles.status; // Default status style
+    }
 
 
     return (
-        <div
-            className={styles.card}
-            onClick={openModal}
-            style={{ cursor: 'pointer' }}
-        >
+        <div className={styles.card}>
             <img src={character.image} alt={character.name} className={styles.image} />
-            <div className={styles.info}>
+            <div className={styles.content}>
                 <h3 className={styles.name}>{character.name}</h3>
-                <p className={styles.species}>Species: {character.species}</p>
-                <p className={styles.status}>Status: {character.status}</p>
-
-
-                <Modal isOpen={isModalOpen} onClose={closeModal} onClick={(e) => e.stopPropagation()}>
-                    <CharacterDetails character={character} isModal />
-                </Modal>
+                <p className={styles.info}>
+                    Status: <span className={getStatusClass()}>{character.status}</span>
+                </p>
+                <p className={styles.info}>
+                    Species: <span className={styles.species}>{character.species}</span>
+                </p>
+                <p className={styles.info}>
+                    Gender: <span className={styles.gender}>{character.gender}</span>
+                </p>
+                <button
+                    onClick={handleToggleFavorite}
+                    className={`${styles.favoriteButton} ${isFavorite ? styles.isFavorite : ''}`}
+                >
+                    {isFavorite ? 'Remove from Favorites' : 'Add to Favorites'}
+                </button>
             </div>
         </div>
     );
