@@ -16,15 +16,19 @@ const CharacterCard: FC<CharacterCardProps> = ({ character }) => {
 
 
     return (
-        <div className={styles.card}>
+        <div
+            className={styles.card}
+            onClick={openModal}
+            style={{ cursor: 'pointer' }}
+        >
             <img src={character.image} alt={character.name} className={styles.image} />
             <div className={styles.info}>
                 <h3 className={styles.name}>{character.name}</h3>
                 <p className={styles.species}>Species: {character.species}</p>
                 <p className={styles.status}>Status: {character.status}</p>
-                <button onClick={openModal} className={styles.detailsButton}>Details</button>
 
-                <Modal isOpen={isModalOpen} onClose={closeModal}>
+
+                <Modal isOpen={isModalOpen} onClose={closeModal} onClick={(e) => e.stopPropagation()}>
                     <CharacterDetails character={character} isModal />
                 </Modal>
             </div>

@@ -6,18 +6,18 @@ interface ModalProps {
     isOpen: boolean;
     onClose: () => void;
     children: ReactNode;
+    onClick?: (event: React.MouseEvent<HTMLDivElement>) => void; // Добавлено onClick
 }
 
-const Modal: FC<ModalProps> = ({ isOpen, onClose, children }) => {
-    if (!isOpen) {
-        return null;
-    }
+const Modal: FC<ModalProps> = ({ isOpen, onClose, children, onClick }) => {
+    if (!isOpen) return null;
+
 
     return ReactDOM.createPortal(
-        <div className={styles.modalOverlay}>
-            <div className={styles.modalContent}>
+        <div className={styles.modalOverlay} onClick={onClose}>
+            <div className={styles.modalContent} onClick={onClick}>  {/* Применяем onClick */}
                 <button className={styles.closeButton} onClick={onClose}>
-                    &times;
+                    X
                 </button>
                 {children}
             </div>
