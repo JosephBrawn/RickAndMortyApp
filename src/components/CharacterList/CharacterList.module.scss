@@ -1,0 +1,15 @@
+@import '../../assets/styles/variables';
+
+.list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  @media (min-width: $tablet-breakpoint) {
+    justify-content: flex-start;
+  }
+}
+
+.noCharacters {
+  text-align: center;
+  font-size: 1.2rem;
+}

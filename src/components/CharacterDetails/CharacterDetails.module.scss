@@ -1,0 +1,56 @@
+@import '../../assets/styles/variables';
+
+.loading,
+.error {
+  text-align: center;
+  padding: 20px;
+  font-size: 1.2em;
+  color: $text-color;
+}
+
+.container {
+  max-width: 800px;
+  margin: 20px auto;
+  background-color: $card-background;
+  border-radius: $border-radius;
+  padding: 20px;
+  text-align: center;
+
+  &.modalView {
+    max-width: 100%;
+    margin: 0;
+  }
+}
+.name {
+  margin-bottom: 20px;
+}
+.details {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+
+  @media (min-width: $tablet-breakpoint) {
+    flex-direction: row;
+    align-items: flex-start;
+  }
+}
+
+
+.image {
+  width: 200px;
+  height: auto;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  @media (min-width: $tablet-breakpoint) {
+    margin-right: 20px;
+    width: 250px;
+  }
+}
+
+.info {
+  text-align: left;
+  p {
+    margin-bottom: 10px;
+  }
+}

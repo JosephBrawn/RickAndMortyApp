@@ -1,0 +1,53 @@
+@import '../../assets/styles/variables';
+
+.card {
+  display: flex;
+  flex-direction: column;
+  background-color: $card-background;
+  border-radius: $border-radius;
+  overflow: hidden;
+  margin: 10px;
+  max-width: 300px;
+
+  @media (min-width: $tablet-breakpoint) {
+    flex-direction: row;
+    max-width: none;
+  }
+}
+
+.image {
+  width: 100%;
+  height: auto;
+  @media (min-width: $tablet-breakpoint) {
+    width: 150px;
+    height: 150px;
+  }
+
+}
+
+.info {
+  padding: 10px;
+}
+
+.name {
+  font-size: 1.2rem;
+  margin-bottom: 5px;
+}
+
+.species,
+.status {
+  font-size: 0.9rem;
+  margin-bottom: 3px;
+}
+
+.detailsButton {
+  background-color: $primary-color;
+  color: $secondary-color;
+  border: none;
+  padding: 8px 16px;
+  border-radius: $border-radius;
+  cursor: pointer;
+  &:hover {
+    opacity: 0.8;
+  }
+}
