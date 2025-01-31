@@ -23,6 +23,7 @@
   width: 100%;
   height: auto;
   display: block;
+  cursor: pointer;
   @media (min-width: 768px) {
     width: 150px;
   }
@@ -77,4 +78,22 @@
       background-color: #c82333;
     }
   }
+}
+.modalDetails {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  h2 {
+    margin: 10px 0;
+  }
+  p {
+    margin-bottom: 8px;
+  }
+}
+.modalImage {
+  width: 200px;
+  height: auto;
+  margin-bottom: 20px;
+  border-radius: 8px;
 }

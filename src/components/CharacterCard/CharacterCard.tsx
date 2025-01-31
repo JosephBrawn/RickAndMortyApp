@@ -2,8 +2,8 @@ import React from 'react';
 import styles from './CharacterCard.module.scss';
 import { Character } from '../../types/character';
 import { useAppDispatch } from '../../store/hooks';
-import { toggleFavorite } from '../../store/slices/charactersSlice';
-import { useAppSelector } from "../../store/hooks";
+import { toggleFavorite, openModal } from '../../store/slices/charactersSlice';
+import { useAppSelector } from '../../store/hooks';
 
 interface CharacterCardProps {
     character: Character;
@@ -15,25 +15,33 @@ const CharacterCard: React.FC<CharacterCardProps> = ({ character }) => {
 
     const isFavorite = favorites.some((fav) => fav.id === character.id);
 
-    const handleToggleFavorite = () => {
+    const handleToggleFavorite = (e: React.MouseEvent) => {
+        e.stopPropagation();
         dispatch(toggleFavorite(character));
     };
 
+    const handleOpenModal = (e: React.MouseEvent<HTMLImageElement>) => {
+        e.stopPropagation();
+        dispatch(openModal(character));
+    };
+
+
     const getStatusClass = () => {
-        if (character.status === "Alive") {
+        if (character.status === 'Alive') {
             return `${styles.status} ${styles.alive}`;
-        } else if (character.status === "Dead") {
+        } else if (character.status === 'Dead') {
             return `${styles.status} ${styles.dead}`;
-        } else if (character.status === "unknown") {
+        } else if (character.status === 'unknown') {
             return `${styles.status} ${styles.unknown}`;
         }
-        return styles.status; // Default status style
-    }
+        return styles.status;
+    };
+
 
 
     return (
         <div className={styles.card}>
-            <img src={character.image} alt={character.name} className={styles.image} />
+            <img src={character.image} alt={character.name} className={styles.image} onClick={handleOpenModal} />
             <div className={styles.content}>
                 <h3 className={styles.name}>{character.name}</h3>
                 <p className={styles.info}>

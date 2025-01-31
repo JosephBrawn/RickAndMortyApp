@@ -3,10 +3,12 @@ import { Character } from '../../types/character';
 
 interface CharactersState {
     favorites: Character[];
+    modalCharacter: Character | null;
 }
 
 const initialState: CharactersState = {
     favorites: [],
+    modalCharacter: null,
 };
 
 const charactersSlice = createSlice({
@@ -22,8 +24,14 @@ const charactersSlice = createSlice({
                 state.favorites.push(character);
             }
         },
+        openModal: (state, action: PayloadAction<Character | null>) => {
+            state.modalCharacter = action.payload;
+        },
+        closeModal: (state) => {
+            state.modalCharacter = null;
+        },
     },
 });
 
-export const { toggleFavorite } = charactersSlice.actions;
+export const { toggleFavorite, openModal, closeModal } = charactersSlice.actions;
 export default charactersSlice.reducer;
