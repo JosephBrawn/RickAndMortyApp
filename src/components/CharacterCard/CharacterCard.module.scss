@@ -1,17 +1,21 @@
 @import '../../assets/styles/variables.scss';
 
 .card {
-  background-color: $card-background;
-  border-radius: 8px;
+  background-color: rgba(0, 0, 0, 0.9);
+  border-radius: 10px;
   overflow: hidden;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   display: flex;
   flex-direction: column;
-  margin: 10px;
-  max-width: 300px;
-  transition: transform 0.2s ease-in-out;
+  margin: 15px;
+  max-width: 400px;
+  transition: transform 0.3s ease-in-out;
+
+
+
   &:hover {
-    transform: scale(1.02);
+    transform: scale(1.03);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
   }
 
   @media (min-width: 768px) {
@@ -24,76 +28,69 @@
   height: auto;
   display: block;
   cursor: pointer;
+  object-fit: cover;
+  object-position: center;
   @media (min-width: 768px) {
-    width: 150px;
+    width: 200px;
   }
 }
 
 .content {
-  padding: 15px;
+  padding: 20px;
   display: flex;
   flex-direction: column;
   flex: 1;
+  color: $secondary-color;
+
 }
 
 .name {
-  font-size: 1.2rem;
-  margin-bottom: 10px;
+  font-size: 1.5rem;
+  margin-bottom: 12px;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
 }
 
 .info {
-  margin-bottom: 5px;
-  font-size: 1rem;
-  .status{
-    font-weight: bold;
-    &.alive {
-      color: #28a745;
-    }
+  margin-bottom: 8px;
+  font-size: 1.1rem;
+  color: #ddd;
 
+  .status {
+    font-weight: bold;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+    &.alive {
+      color: greenyellow;
+    }
     &.dead {
       color: #dc3545;
     }
-    &.unknown{
-      color: #ffc107
+
+    &.unknown {
+      color: #ffc107;
     }
   }
 }
+
+
 .favoriteButton {
-  background-color: #28a745;
-  color: white;
-  border: none;
+  background-color: greenyellow;
+  color: black;
+  border: 1px solid #2e7d32;
   padding: 10px 15px;
   cursor: pointer;
   border-radius: 5px;
-  transition: background-color 0.3s ease;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  align-self: flex-start;
 
   &:hover {
-    background-color: #218838;
+    background-color: limegreen;
   }
 
   &.isFavorite {
-    background-color: #dc3545;
-
+    background-color: #c62828;
+    border: 1px solid #b71c1c;
     &:hover {
-      background-color: #c82333;
+      background-color: #b71c1c;
     }
   }
-}
-.modalDetails {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  h2 {
-    margin: 10px 0;
-  }
-  p {
-    margin-bottom: 8px;
-  }
-}
-.modalImage {
-  width: 200px;
-  height: auto;
-  margin-bottom: 20px;
-  border-radius: 8px;
 }

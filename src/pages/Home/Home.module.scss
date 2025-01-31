@@ -15,8 +15,8 @@
   align-items: center;
   gap: 10px;
   .button {
-    background-color: $accent-color;
-    color: white;
+    background-color:greenyellow;
+    color: black;
     border: none;
     padding: 10px 15px;
     border-radius: 4px;
@@ -30,7 +30,7 @@
 
     }
     &:not(:disabled):hover {
-      background-color: lighten($accent-color, 10%);
+      background-color:limegreen;
     }
   }
 }
