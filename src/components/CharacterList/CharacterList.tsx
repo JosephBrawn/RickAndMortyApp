@@ -6,14 +6,13 @@ import { Character } from '../../types/character';
 
 interface CharacterListProps {
     characters: Character[];
-    openModal: (character: Character) => void;
 }
 
-const CharacterList: React.FC<CharacterListProps> = ({ characters, openModal }) => {
+const CharacterList: React.FC<CharacterListProps> = ({ characters }) => {
     return (
         <div className={styles.list}>
             {characters.map((character) => (
-                <CharacterCard key={character.id} character={character} openModal={openModal}/>
+                <CharacterCard key={character.id} character={character}  />
             ))}
         </div>
     );

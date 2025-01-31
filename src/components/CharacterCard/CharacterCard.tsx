@@ -15,16 +15,15 @@ const CharacterCard: React.FC<CharacterCardProps> = ({ character }) => {
 
     const isFavorite = favorites.some((fav) => fav.id === character.id);
 
+    const handleOpenModal = () => {
+        dispatch(openModal(character));
+    };
+
+
     const handleToggleFavorite = (e: React.MouseEvent) => {
         e.stopPropagation();
         dispatch(toggleFavorite(character));
     };
-
-    const handleOpenModal = (e: React.MouseEvent<HTMLImageElement>) => {
-        e.stopPropagation();
-        dispatch(openModal(character));
-    };
-
 
     const getStatusClass = () => {
         if (character.status === 'Alive') {
@@ -40,7 +39,7 @@ const CharacterCard: React.FC<CharacterCardProps> = ({ character }) => {
 
 
     return (
-        <div className={styles.card}>
+        <div className={styles.card} >
             <img src={character.image} alt={character.name} className={styles.image} onClick={handleOpenModal} />
             <div className={styles.content}>
                 <h3 className={styles.name}>{character.name}</h3>
