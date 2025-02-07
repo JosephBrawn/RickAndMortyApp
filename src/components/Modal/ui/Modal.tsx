@@ -1,28 +1,28 @@
-import React from 'react';
+import {FC,ReactNode,MouseEvent} from 'react';
 import styles from './Modal.module.scss';
-import { useAppDispatch, useAppSelector } from '../../store/hooks';
-import { toggleFavorite } from '../../store/slices/charactersSlice';
+import { useAppDispatch, useAppSelector } from '../../../store/hooks.ts';
+import { toggleFavorite } from '../../../store/slices/charactersSlice.ts';
 interface ModalProps {
     isOpen: boolean;
     onClose: () => void;
-    children: React.ReactNode;
+    children: ReactNode;
 }
 
-const Modal: React.FC<ModalProps> = ({ isOpen, onClose, children }) => {
+export const Modal: FC<ModalProps> = ({ isOpen, onClose, children }) => {
     const dispatch = useAppDispatch();
     const modalCharacter = useAppSelector((state) => state.characters.modalCharacter);
     const favorites = useAppSelector((state) => state.characters.favorites);
     const isFavorite = favorites?.some((fav) => fav.id === modalCharacter?.id);
     if (!isOpen) return null;
 
-    const handleToggleFavorite = (e: React.MouseEvent) => {
+    const handleToggleFavorite = (e: MouseEvent) => {
         e.stopPropagation()
         if (modalCharacter) {
             dispatch(toggleFavorite(modalCharacter));
         }
     };
 
-    const handleOverlayClick = (e: React.MouseEvent<HTMLDivElement>) => {
+    const handleOverlayClick = (e: MouseEvent<HTMLDivElement>) => {
         if (e.target === e.currentTarget) {
             onClose();
         }
@@ -45,5 +45,3 @@ const Modal: React.FC<ModalProps> = ({ isOpen, onClose, children }) => {
         </div>
     );
 };
-
-export default Modal;

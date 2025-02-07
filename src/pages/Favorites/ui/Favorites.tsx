@@ -1,11 +1,11 @@
-import React from 'react';
+import {FC} from 'react';
 import styles from './Favorites.module.scss';
-import CharacterList from '../../components/CharacterList/CharacterList';
-import { useAppSelector } from '../../store/hooks';
-import { Character } from '../../types/character';
-import {useAppDispatch} from "../../store";
+import {CharacterList} from '../../../components/CharacterList';
+import { useAppSelector } from '../../../store/hooks.ts';
+import { Character } from '../../../types/character.ts';
+import {useAppDispatch} from "../../../store";
 
-const Favorites: React.FC = () => {
+export const Favorites: FC = () => {
     const favoriteCharacters = useAppSelector((state) => state.characters.favorites);
     const dispatch = useAppDispatch()
     const openModal = (character: Character) => {
@@ -25,4 +25,3 @@ const Favorites: React.FC = () => {
     );
 };
 
-export default Favorites;

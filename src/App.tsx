@@ -1,11 +1,11 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import Home from './pages/Home/Home';
-import Favorites from './pages/Favorites/Favorites';
-import Header from './components/Header/Header';
-import NotFound from './components/NotFound/NotFound';
+import {Home} from './pages/Home';
+import {Favorites} from './pages/Favorites';
+import {Header} from './components/Header';
+import {NotFound} from './components/NotFound';
 import styles from './assets/styles/main.module.scss';
-import Modal from './components/Modal/Modal';
+import {Modal} from './components/Modal';
 import { useAppSelector, useAppDispatch } from './store/hooks';
 import { closeModal } from './store/slices/charactersSlice';
 

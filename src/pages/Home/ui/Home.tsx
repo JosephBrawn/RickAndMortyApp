@@ -1,14 +1,14 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState,FC } from 'react';
 import styles from './Home.module.scss';
-import CharacterList from '../../components/CharacterList/CharacterList';
-import SearchBar from '../../components/SearchBar/SearchBar';
-import FilterBar from '../../components/FilterBar/FilterBar';
-import { fetchCharacters } from '../../utils/api';
-import { Character } from '../../types/character';
-import Loader from '../../components/Loader/Loader';
-import {useAppDispatch} from "../../store";
+import {CharacterList} from '../../../components/CharacterList';
+import {SearchBar} from '../../../components/SearchBar';
+import {FilterBar} from '../../../components/FilterBar';
+import { fetchCharacters } from '../../../utils/api.ts';
+import { Character } from '../../../types/character.ts';
+import {Loader} from '../../../components/Loader';
+import {useAppDispatch} from "../../../store";
 
-const Home: React.FC = () => {
+export const Home: FC = () => {
     const [characters, setCharacters] = useState<Character[]>([]);
     const [loading, setLoading] = useState(false);
     const [searchName, setSearchName] = useState('');
@@ -78,4 +78,3 @@ const Home: React.FC = () => {
     );
 };
 
-export default Home;

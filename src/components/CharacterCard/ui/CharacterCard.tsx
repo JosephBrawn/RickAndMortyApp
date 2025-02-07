@@ -1,15 +1,15 @@
-import React from 'react';
+import {FC} from 'react';
 import styles from './CharacterCard.module.scss';
-import { Character } from '../../types/character';
-import { useAppDispatch } from '../../store/hooks';
-import { toggleFavorite, openModal } from '../../store/slices/charactersSlice';
-import { useAppSelector } from '../../store/hooks';
+import { Character } from '../../../types/character.ts';
+import { useAppDispatch } from '../../../store/hooks.ts';
+import { toggleFavorite, openModal } from '../../../store/slices/charactersSlice.ts';
+import { useAppSelector } from '../../../store/hooks.ts';
 
 interface CharacterCardProps {
     character: Character;
 }
 
-const CharacterCard: React.FC<CharacterCardProps> = ({ character }) => {
+export const CharacterCard: FC<CharacterCardProps> = ({ character }) => {
     const dispatch = useAppDispatch();
     const favorites = useAppSelector((state) => state.characters.favorites);
 
@@ -63,4 +63,4 @@ const CharacterCard: React.FC<CharacterCardProps> = ({ character }) => {
     );
 };
 
-export default CharacterCard;
+

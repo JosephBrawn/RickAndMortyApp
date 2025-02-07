@@ -1,11 +1,11 @@
-import React, { useState } from 'react';
+import  { useState,FC } from 'react';
 import styles from './FilterBar.module.scss';
 
 interface FilterBarProps {
     onFilter: (status: string, gender: string) => void;
 }
 
-const FilterBar: React.FC<FilterBarProps> = ({ onFilter }) => {
+export const FilterBar: FC<FilterBarProps> = ({ onFilter }) => {
     const [status, setStatus] = useState<string>('');
     const [gender, setGender] = useState<string>('');
 
@@ -54,4 +54,3 @@ const FilterBar: React.FC<FilterBarProps> = ({ onFilter }) => {
     );
 };
 
-export default FilterBar;

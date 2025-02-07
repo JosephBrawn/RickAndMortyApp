@@ -1,14 +1,14 @@
-import React, { useState } from 'react';
+import  { useState,ChangeEvent,FC } from 'react';
 import styles from './SearchBar.module.scss';
 
 interface SearchBarProps {
     onSearch: (query: string) => void;
 }
 
-const SearchBar: React.FC<SearchBarProps> = ({ onSearch }) => {
+export const SearchBar: FC<SearchBarProps> = ({ onSearch }) => {
     const [searchQuery, setSearchQuery] = useState('');
 
-    const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const handleInputChange = (event: ChangeEvent<HTMLInputElement>) => {
         setSearchQuery(event.target.value);
     };
 
@@ -30,4 +30,3 @@ const SearchBar: React.FC<SearchBarProps> = ({ onSearch }) => {
     );
 };
 
-export default SearchBar;

@@ -1,7 +1,7 @@
-import React from 'react';
+import {FC} from 'react';
 import styles from './Loader.module.scss';
 
-const Loader: React.FC = () => {
+export const Loader: FC = () => {
     return (
         <div className={styles.loader}>
             <div className={styles.spinner}></div>
@@ -9,4 +9,3 @@ const Loader: React.FC = () => {
     );
 };
 
-export default Loader;
