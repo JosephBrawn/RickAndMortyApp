@@ -1,4 +1,4 @@
-import React from 'react';
+import {FC} from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import {Home} from './pages/Home';
 import {Favorites} from './pages/Favorites';
@@ -9,7 +9,7 @@ import {Modal} from './components/Modal';
 import { useAppSelector, useAppDispatch } from './store/hooks';
 import { closeModal } from './store/slices/charactersSlice';
 
-const App: React.FC = () => {
+const App: FC = () => {
     const modalCharacter = useAppSelector((state) => state.characters.modalCharacter);
     const dispatch = useAppDispatch();
 
