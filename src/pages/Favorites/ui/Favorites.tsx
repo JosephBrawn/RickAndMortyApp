@@ -9,13 +9,13 @@ export const Favorites: FC = () => {
     const favoriteCharacters = useAppSelector((state) => state.characters.favorites);
     const dispatch = useAppDispatch()
     const openModal = (character: Character) => {
-        dispatch({type: 'OPEN_MODAL', payload: character})
+        dispatch({ type: 'OPEN_MODAL', payload: character });
     };
 
 
     return (
         <div className={styles.container}>
-            <h2>Favorite Characters</h2>
+            <h2 className={styles.favorite}>Favorite Characters</h2>
             {favoriteCharacters.length > 0 ? (
                 <CharacterList characters={favoriteCharacters} openModal={openModal}/>
             ) : (

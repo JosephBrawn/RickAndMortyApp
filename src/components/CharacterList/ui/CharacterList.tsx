@@ -6,6 +6,7 @@ import { Character } from '../../../types/character.ts';
 
 interface CharacterListProps {
     characters: Character[];
+    openModal: (character: Character) => void;
 }
 
 export const CharacterList: FC<CharacterListProps> = ({ characters }) => {

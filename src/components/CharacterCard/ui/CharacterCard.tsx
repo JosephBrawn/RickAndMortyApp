@@ -1,4 +1,4 @@
-import {FC} from 'react';
+import {FC,MouseEvent} from 'react';
 import styles from './CharacterCard.module.scss';
 import { Character } from '../../../types/character.ts';
 import { useAppDispatch } from '../../../store/hooks.ts';
@@ -20,7 +20,7 @@ export const CharacterCard: FC<CharacterCardProps> = ({ character }) => {
     };
 
 
-    const handleToggleFavorite = (e: React.MouseEvent) => {
+    const handleToggleFavorite = (e: MouseEvent) => {
         e.stopPropagation();
         dispatch(toggleFavorite(character));
     };
