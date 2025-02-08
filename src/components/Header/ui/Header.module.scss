@@ -1,8 +1,8 @@
-@import '../../../assets/styles/variables';
+@use '../../../assets/styles/style' as style;
 
 .header {
   background-color:greenyellow;
-  color: $secondary-color;
+  color: style.$secondary-color;
   padding: 10px 0;
   position: sticky;
   top: 0;
@@ -29,8 +29,4 @@
   text-decoration: none;
   font-weight: bold;
   transition: color 0.3s ease;
-
-  &:hover {
-    color: lighten($secondary-color, 20%);
-  }
 }

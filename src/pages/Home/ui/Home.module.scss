@@ -1,4 +1,4 @@
-@import '../../../assets/styles/variables';
+@use '../../../assets/styles/style' as style;
 .container {
   max-width: 100%;
   margin: 0 auto;
@@ -26,9 +26,8 @@
     &:disabled {
       opacity: 0.5;
       cursor: not-allowed;
-      background-color: lighten($accent-color, 10%) ;
-
     }
+
     &:not(:disabled):hover {
       background-color:limegreen;
     }

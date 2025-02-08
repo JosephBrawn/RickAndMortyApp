@@ -1,4 +1,4 @@
-@import '../../../assets/styles/variables';
+@use '../../../assets/styles/variables' as style;
 
 .notFound {
   display: flex;
@@ -7,7 +7,7 @@
   justify-content: center;
   height: calc(100vh - 120px);
   text-align: center;
-  color: $accent-color;
+  color: style.$accent-color;
   h1 {
     font-size: 5rem;
   }

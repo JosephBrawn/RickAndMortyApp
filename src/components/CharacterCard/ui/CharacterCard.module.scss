@@ -1,4 +1,4 @@
-@import '../../../assets/styles/variables';
+@use '../../../assets/styles/style' as style;
 
 .card {
   background-color: rgba(0, 0, 0, 0.9);
@@ -36,7 +36,7 @@
   display: flex;
   flex-direction: column;
   flex: 1;
-  color: $secondary-color;
+  color: style.$secondary-color;
 
 }
 

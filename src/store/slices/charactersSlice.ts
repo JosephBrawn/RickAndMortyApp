@@ -72,5 +72,6 @@ const charactersSlice = createSlice({
 export const selectCharacters = (state: RootState) => state.characters.characters
 export const selectLoading = (state: RootState) => state.characters.loading
 export const selectPageInfo = (state: RootState) => state.characters.pageInfo
+export const selectModalCharacter = (state: RootState) => state.characters.modalCharacter
 export const { openModal, closeModal } = charactersSlice.actions;
 export default charactersSlice.reducer;

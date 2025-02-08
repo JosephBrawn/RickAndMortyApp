@@ -1,4 +1,4 @@
-@import '../../../assets/styles/variables';
+@use '../../../assets/styles/style' as style;
 
 .modalOverlay {
   position: fixed;
@@ -22,7 +22,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  color: $secondary-color;
+  color: style.$secondary-color;
 }
 
 .closeButton {
@@ -33,11 +33,7 @@
   background: none;
   font-size: 2rem;
   cursor: pointer;
-  color: $secondary-color;
-
-  &:hover {
-    color: darken($secondary-color, 20%);
-  }
+  color: style.$secondary-color;
 }
 .favoriteButton {
   background-color: greenyellow;

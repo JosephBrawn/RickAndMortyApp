@@ -1,9 +1,11 @@
 import {FC,ReactNode,MouseEvent} from 'react';
 import styles from './Modal.module.scss';
-import { useAppDispatch, useAppSelector } from '../../../store/hooks.ts';
+
 import { toggleFavorite } from '../../../store/slices/favoriteSlice.ts';
-import {useSelector} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import {selectFavoriteCards} from "../../../store/slices/favoriteSlice.ts";
+import {RootDispatch} from "../../../store";
+import {selectModalCharacter} from "../../../store/slices/charactersSlice.ts";
 interface ModalProps {
     isOpen: boolean;
     onClose: () => void;
@@ -11,8 +13,8 @@ interface ModalProps {
 }
 
 export const Modal: FC<ModalProps> = ({ isOpen, onClose, children }) => {
-    const dispatch = useAppDispatch();
-    const modalCharacter = useAppSelector((state) => state.characters.modalCharacter);
+    const dispatch: RootDispatch = useDispatch();
+    const modalCharacter = useSelector(selectModalCharacter);
     const favorites = useSelector(selectFavoriteCards);
     const isFavorite = favorites?.some((fav) => fav.id === modalCharacter?.id);
     if (!isOpen) return null;
