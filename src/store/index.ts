@@ -1,14 +1,14 @@
 import { configureStore } from '@reduxjs/toolkit';
 import charactersReducer from './slices/charactersSlice';
-import {useDispatch} from "react-redux";
-
+import favoriteReducer from './slices/favoriteSlice';
 
 export const store = configureStore({
     reducer: {
         characters: charactersReducer,
+        favorites: favoriteReducer,
     },
 });
 
-export type RootState = ReturnType<typeof store.getState>;
-export type AppDispatch = typeof store.dispatch;
-export const useAppDispatch: () => AppDispatch = useDispatch;
+export type AppStore = typeof store;
+export type RootState = ReturnType<AppStore["getState"]>;
+export type RootDispatch = AppStore['dispatch'];

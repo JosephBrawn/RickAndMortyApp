@@ -20,11 +20,18 @@ export interface Character {
 }
 
 export interface CharactersResponse {
-    info: {
-        count: number;
-        pages: number;
-        next: string | null;
-        prev: string | null;
-    };
+    info: IPageInfo;
     results: Character[];
+}
+export interface Ifavorites{
+    favoriteCards:Character[];
+    modalCharacter: Character | null;
+
+}
+
+export interface IPageInfo {
+    count: number;
+    pages: number;
+    next: string | null;
+    prev: string | null;
 }

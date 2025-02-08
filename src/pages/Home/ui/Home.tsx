@@ -3,37 +3,51 @@ import styles from './Home.module.scss';
 import {CharacterList} from '../../../components/CharacterList';
 import {SearchBar} from '../../../components/SearchBar';
 import {FilterBar} from '../../../components/FilterBar';
-import { fetchCharacters } from '../../../utils/api.ts';
 import { Character } from '../../../types/character.ts';
 import {Loader} from '../../../components/Loader';
-import {useAppDispatch} from "../../../store";
+import {RootDispatch} from "../../../store";
+import {useDispatch, useSelector} from "react-redux";
+import {getCharacters, selectCharacters, selectLoading, selectPageInfo} from "../../../store/slices/charactersSlice.ts";
 
 export const Home: FC = () => {
-    const [characters, setCharacters] = useState<Character[]>([]);
-    const [loading, setLoading] = useState(false);
+    // const [characters, setCharacters] = useState<Character[]>([]);
+    // const [loading, setLoading] = useState(false);
     const [searchName, setSearchName] = useState('');
     const [statusFilter, setStatusFilter] = useState('');
     const [genderFilter, setGenderFilter] = useState('');
     const [page, setPage] = useState(1);
-    const [totalPages, setTotalPages] = useState(1);
-    const dispatch = useAppDispatch()
+    const dispatch: RootDispatch = useDispatch()
+
+    const characters = useSelector(selectCharacters)
+    const isLoading = useSelector(selectLoading)
+    const pageInfo = useSelector(selectPageInfo)
+    const totalPages = pageInfo.pages;
+
+    // useEffect(() => {
+    //     const loadCharacters = async () => {
+    //         setLoading(true);
+    //         try {
+    //             const data = await fetchCharacters(page, searchName, statusFilter, genderFilter);
+    //             setCharacters(data.results);
+    //             setTotalPages(data.info.pages);
+    //         } catch (error) {
+    //             console.error('Error fetching characters:', error);
+    //         } finally {
+    //             setLoading(false);
+    //         }
+    //     };
+    //
+    //     loadCharacters();
+    // }, [page, searchName, statusFilter, genderFilter]);
 
     useEffect(() => {
-        const loadCharacters = async () => {
-            setLoading(true);
-            try {
-                const data = await fetchCharacters(page, searchName, statusFilter, genderFilter);
-                setCharacters(data.results);
-                setTotalPages(data.info.pages);
-            } catch (error) {
-                console.error('Error fetching characters:', error);
-            } finally {
-                setLoading(false);
-            }
-        };
-
-        loadCharacters();
-    }, [page, searchName, statusFilter, genderFilter]);
+        dispatch(getCharacters({
+            page: page,
+            name: searchName,
+            status: statusFilter,
+            gender: genderFilter,
+        }))
+    }, [dispatch, page, searchName, statusFilter, genderFilter]);
 
     const handleSearch = (query: string) => {
         setSearchName(query);
@@ -62,7 +76,7 @@ export const Home: FC = () => {
         <div className={`${styles.container} ${styles.home}`}>
             <SearchBar onSearch={handleSearch} />
             <FilterBar onFilter={handleFilter} />
-            {loading ? <Loader /> : <CharacterList characters={characters} openModal={openModal}/>}
+            {isLoading ? <Loader /> : <CharacterList characters={characters} openModal={openModal}/>}
             <div className={styles.pagination}>
                 <button onClick={handlePreviousPage} disabled={page <= 1} className={styles.button}>
                     Previous

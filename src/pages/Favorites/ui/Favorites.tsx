@@ -1,13 +1,14 @@
 import {FC} from 'react';
 import styles from './Favorites.module.scss';
 import {CharacterList} from '../../../components/CharacterList';
-import { useAppSelector } from '../../../store/hooks.ts';
 import { Character } from '../../../types/character.ts';
-import {useAppDispatch} from "../../../store";
+import {RootDispatch} from "../../../store";
+import {useDispatch, useSelector} from "react-redux";
+import {selectFavoriteCards} from "../../../store/slices/favoriteSlice.ts";
 
 export const Favorites: FC = () => {
-    const favoriteCharacters = useAppSelector((state) => state.characters.favorites);
-    const dispatch = useAppDispatch()
+    const favoriteCharacters = useSelector(selectFavoriteCards);
+    const dispatch: RootDispatch = useDispatch()
     const openModal = (character: Character) => {
         dispatch({ type: 'OPEN_MODAL', payload: character });
     };

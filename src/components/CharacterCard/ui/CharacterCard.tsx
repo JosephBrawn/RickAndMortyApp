@@ -2,8 +2,10 @@ import {FC,MouseEvent} from 'react';
 import styles from './CharacterCard.module.scss';
 import { Character } from '../../../types/character.ts';
 import { useAppDispatch } from '../../../store/hooks.ts';
-import { toggleFavorite, openModal } from '../../../store/slices/charactersSlice.ts';
-import { useAppSelector } from '../../../store/hooks.ts';
+import { openModal } from '../../../store/slices/charactersSlice.ts';
+import {toggleFavorite} from '../../../store/slices/favoriteSlice.ts';
+import {selectFavoriteCards} from "../../../store/slices/favoriteSlice.ts";
+import {useSelector} from "react-redux";
 
 interface CharacterCardProps {
     character: Character;
@@ -11,7 +13,7 @@ interface CharacterCardProps {
 
 export const CharacterCard: FC<CharacterCardProps> = ({ character }) => {
     const dispatch = useAppDispatch();
-    const favorites = useAppSelector((state) => state.characters.favorites);
+    const favorites = useSelector(selectFavoriteCards);
 
     const isFavorite = favorites.some((fav) => fav.id === character.id);
 
